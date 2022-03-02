@@ -1,0 +1,10 @@
+# _*_ coding:utf-8 _*_ 
+
+import cv2  # anaconda 가상환경에서 pip install opencv-python으로 설치
+# 현재 최신 버전 4.5.5
+
+image = cv2.imread("Duck.jpg",cv2.IMREAD_COLOR)  
+
+cv2.imshow("Duck",image)
+cv2.waitKey(0)     # 0을 넣으면 사용자가 키를 입력하기 전까지 계속 떠 있음.
+cv2.destroyAllWindows()    # 프로그램 종료 시 모든 창을 닫음.
