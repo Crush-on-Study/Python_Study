@@ -1,0 +1,15 @@
+# _*_ coding:utf-8 _*_
+import cv2
+
+image = cv2.imread("images.jpg",cv2.IMREAD_COLOR)
+height,width, channel = image.shape
+
+# 로테이션은 이미지 파일의 좌표를 기준으로 한다. 보통은 이미지의 중심을 기준으로 함.
+
+image2 = cv2.getRotationMatrix2D((height/2,width/2), 45 , 1)   # 로테이션 기준 좌표 / 각도 / 스케일
+dst = cv2.warpAffine(image, image2 , (width, height))
+
+cv2.imshow("image2",dst)
+cv2.imshow("image",image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
