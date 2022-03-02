@@ -1,0 +1,15 @@
+# _*_ coding:utf-8 _*_
+
+import cv2
+
+image = cv2.imread("images.jpg",cv2.IMREAD_COLOR)
+image_inversion = cv2.flip(image,0)  # 0은 좌우반전
+image2 = cv2.flip(image,1)  # 1은 상하좌우반전  (사실 양수기만 하면 됨)
+image3 = cv2.flip(image,-1) # 상하반전  (마찬가지로 음수기만 하면 됨)
+
+cv2.imshow("images",image)
+cv2.imshow("inversion",image_inversion)
+cv2.imshow("image2",image2)
+cv2.imshow("image3",image3)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
