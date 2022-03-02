@@ -1,0 +1,19 @@
+# _*_ coding:utf-8 _*_
+
+import cv2
+
+webcam = cv2.VideoCapture(0) # 0번째 카메라 (카메라가 따로 없고 노트북인 경우 내장웹캠 하나 있을테니 0번하면 된다)
+if not webcam.isOpened():  # 웹캠이 안열리면 닫아.
+    exit()
+    
+while True:   # 웹캠은 일단 계속 켜놔야하니까 무한루프 시킴.
+    check , frame = webcam.read()  # check로 웹캠 안나올경우 빠져나가도록.
+    if not check:
+        break
+    
+    cv2.imshow('webcam',frame)  # 잘 나올경우 frame을 받아들이고  q 누르면 나가는걸로.
+    if cv2.waitKey(1) == ord('q'):
+        break
+    
+webcam.release()  # 메모리 반환
+cv2.destroyAllWindows()
