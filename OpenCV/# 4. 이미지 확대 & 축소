@@ -1,0 +1,15 @@
+# _*_ coding:utf-8 _*_
+
+import cv2
+
+image = cv2.imread("images.jpg",cv2.IMREAD_COLOR)
+height,width, channel = image.shape
+
+dst = cv2.pyrUp(image, dstsize = (width * 2 , height * 2), borderType = cv2.BORDER_DEFAULT )
+
+cv2.imshow("image",image)
+cv2.imshow("Big size",dst)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+# 이미지 피라미드 기법.
