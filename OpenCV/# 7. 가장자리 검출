@@ -1,0 +1,16 @@
+#_*_coding:utf-8_*_
+import cv2
+
+image = cv2.imread("images.jpg",cv2.IMREAD_COLOR)
+dst = cv2.resize(image, dsize = (0,0), fx=2.0 , fy=2.0, interpolation = cv2.INTER_AREA)
+
+sobel = cv2.Sobel(dst, cv2.CV_8U, 1,0,3)
+Laplacian = cv2.Laplacian(dst, cv2.CV_8U, ksize=3)
+canny = cv2.Canny(dst, 200, 200)
+
+cv2.imshow("image",image)
+cv2.imshow("s",sobel)
+cv2.imshow("L",Laplacian)
+cv2.imshow("c",canny)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
