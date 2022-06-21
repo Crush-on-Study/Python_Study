@@ -1,0 +1,18 @@
+import cv2
+import numpy as np
+
+image = np.zeros((480,640,3),dtype=np.uint8)
+
+color = (0,255,0)
+thick = 2
+scale = 1
+
+cv2.putText(image,"Crush on Study",(20,50),cv2.FONT_HERSHEY_SIMPLEX,scale,color,thick)
+cv2.putText(image,"Crush on Study",(50,80),cv2.FONT_ITALIC,scale,color,thick)
+cv2.putText(image,"Crush on Study",(80,110),cv2.FONT_HERSHEY_COMPLEX,scale,color,thick)
+cv2.putText(image,"Crush on Study",(110,140),cv2.FONT_HERSHEY_TRIPLEX,scale,color,thick)
+
+
+cv2.imshow("Check",image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
