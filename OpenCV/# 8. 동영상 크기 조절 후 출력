@@ -1,0 +1,25 @@
+import cv2
+
+video = cv2.VideoCapture("Programming.mp4")
+
+if video.isOpened():
+    fps = video.get(cv2.CAP_PROP_FPS)
+    f_count = video.get(cv2.CAP_PROP_FRAME_COUNT)
+    f_width = video.get(cv2.CAP_PROP_FRAME_WIDTH)
+    f_height = video.get(cv2.CAP_PROP_FRAME_HEIGHT)
+    
+while video.isOpened():
+    check,frame = video.read()
+    if not check:
+        print("Frame is over")
+        break
+    
+    re_frame = cv2.resize(frame,dsize=(round(f_width/5),round(f_height/5)))
+    cv2.imshow("Programming",re_frame)
+    
+    if cv2.waitKey(25) == ord('q'):
+        print("Stop.")
+        break
+     
+video.release()
+cv2.destroyAllWindows()
