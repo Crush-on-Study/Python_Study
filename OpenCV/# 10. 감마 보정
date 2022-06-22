@@ -1,0 +1,14 @@
+import cv2
+import numpy as np
+
+g = float(input("감마 값 : "))
+img = cv2.imread("Ira.jpg")
+image2 = cv2.resize(img,dsize=(0,0),fx=0.5,fy=0.5,interpolation=cv2.INTER_AREA)
+out = image2.copy()
+                                            # out = img.astype(np.float)
+out = ((out / 255)**g)*255
+out = out.astype(np.uint8)  # 출력을 위해 다시 정수형으로 변환.
+cv2.imshow("original", image2)
+cv2.imshow("gamma", out)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
