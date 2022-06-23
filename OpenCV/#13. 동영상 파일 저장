@@ -1,0 +1,29 @@
+import cv2
+
+video = cv2.VideoCapture("Programming.mp4")
+
+# 코덱 정의
+fourcc = cv2.VideoWriter_fourcc(*"DIVX")  # 코덱 종류 중 하나임.
+
+fps = video.get(cv2.CAP_PROP_FPS)
+height = round(video.get(cv2.CAP_PROP_FRAME_HEIGHT))
+width = round(video.get(cv2.CAP_PROP_FRAME_WIDTH))
+count = video.get(cv2.CAP_PROP_FRAME_COUNT)
+
+output = cv2.VideoWriter("Mood",fourcc,fps,(width,height))
+
+while video.isOpened():
+    check,frame = video.read()
+    if not check:
+        print("frame 끝남.")
+        break
+    
+    output.write(frame) # 영상만 저장 (소리는 안나옴)
+    cv2.imshow("No Title",frame)
+    if cv2.waitKey(25) == ord('q'):
+        print("종료")
+        break
+
+output.release()
+video.release()
+cv2.destroyAllWindows()
