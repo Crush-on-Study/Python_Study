@@ -1,0 +1,10 @@
+import cv2
+
+image = cv2.imread("images.jpg",cv2.IMREAD_UNCHANGED)
+print(image.shape)  # 자르기 전, 원본 이미지의 사이즈 확인
+image_cut = image[100:200,50:150]
+
+cv2.imshow("cut",image)
+cv2.imshow("cut",image_cut)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
