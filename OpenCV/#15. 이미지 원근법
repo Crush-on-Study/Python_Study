@@ -1,0 +1,17 @@
+import cv2
+import numpy as np
+
+image = cv2.imread("Earth_2.jpg",cv2.IMREAD_ANYCOLOR)
+
+width,height,channel = image.shape
+
+# 디폴트 : 세로(h),가로(w)
+src = np.array([[100,300],[200,300],[100,200],[200,200]],dtype=np.float32)
+dst = np.array([[0,0],[height,0],[0,width],[height,width]],dtype = np.float32)
+
+convertion = cv2.getPerspectiveTransform(src,dst) # 매트릭스 가져옴
+result = cv2.warpPerspective(image,convertion, (width,height))
+
+cv2.imshow("Iraya",result)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
